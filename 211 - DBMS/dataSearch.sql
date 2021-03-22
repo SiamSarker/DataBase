@@ -1,25 +1,24 @@
-USE USE hr_schema;
 
 1.
-SELECT * FROM tablename
+SELECT * FROM tablename;
 /* * all */
 
 
 2. COLUMN FILTER (showing specific cloums)
 SELECT col1, col2, col3 
-FROM tablename
+FROM tablename;
 
 
 3. COLUMN aliasing/renaming:
-/* SELECT col1+col2 AS 'SUM DATA',
+ SELECT col1+col2 AS 'SUM DATA',
         col3 AS 'COLUMN 3',
-        col4*col5 AS 'Cross'  */
-FROM tablename
+        col4*col5 AS 'Cross'  
+FROM tablename;
 
-/* SELECT  SALARY AS 'Salary without commission',
+SELECT  SALARY AS 'Salary without commission',
 		SALARY/1000 AS 'Salary in thousand format',
 		SALARY + SALARY * COMMISSION_PCT AS 'final Salary'
-FROM employees */
+ FROM employees;
 
 4. row filtering (showing specific data)
 SELECT * | col1, col2+col3,...
@@ -28,31 +27,31 @@ WHERE condition;
 
 SELECT *
 FROM employees
-WHERE DEPARTMENT_ID = 50 and SALARY > 3000
+WHERE DEPARTMENT_ID = 50 and SALARY > 3000;
 
 
 5. showing sorted data:
 SELECT * | col1, col2+col3,...
 FROM tablename
 WHERE condition
-ORDER BY col1 ASC|DESC, col2 ASC|DESC....
+ORDER BY col1 ASC|DESC, col2 ASC|DESC....;
 
 SELECT  FIRST_NAME,
 		EMAIL,
         SALARY,
         HIRE_DATE
 FROM employees
-ORDER  BY HIRE_DATE ASC
+ORDER  BY HIRE_DATE ASC;
 
 
 6. showing distinct rows/data
 SELECT DISTINCT col1, col2                 /* (both distinct check and keeps when difference in any column) */
-FROM tablename
+FROM tablename;
 
 /* show all the manager ids from employees */
 SELECT DISTINCT MANAGER_ID
 FROM employees
-ORDER BY MANAGER_ID ASC
+ORDER BY MANAGER_ID ASC;
 
 
 7. showing limitd number of rows
@@ -61,42 +60,48 @@ FROM tablename
 WHERE condition
 ORDER BY col1 ASC|DESC, col2 ASC|DESC....
 LIMIT 3 |  /* how many */
-LIMIT 4, 1 /* 4 skip/offset data, 1 show/row count */
+LIMIT 4, 1; /* 4 skip/offset data, 1 show/row count */
 
 /* show the 10th highest salary holder employee details from 50 number department */
 SELECT *
 FROM employees
 WHERE DEPARTMENT_ID = 50
 ORDER BY SALARY DESC
-LIMIT 9,1
+LIMIT 9,1;
+
+
+
+
 
 
 exercise:
 
 /* show the first name and salary value in thousand foemat */
 SELECT FIRST_NAME,
-		/* SALARY DIV 1000 AS 'sal in thousand', */
- 		/* SALARY/1000 AS 'sal in thousand in floating' */
-FROM employees
+		SALARY DIV 1000 AS 'sal in thousand',
+ 		SALARY/1000 AS 'sal in thousand in floating'
+FROM employees;
 
 
 /* show the employee details who works in depertment no 50 whoese id is 101 */
 SELECT * 
 FROM employees
-WHERE DEPARTMENT_ID = 50 AND MANAGER_ID = 101
+WHERE DEPARTMENT_ID = 50 AND MANAGER_ID = 101;
 
 
 /* show those employee details whose salary is greater than or equal 5000 and whoes salary is less than or equal 20000  */
 SELECT * 
 FROM employees
 #WHERE SALARY >= 5000 AND SALARY <=20000
-WHERE SALARY BETWEEN 10000 AND 20000
+WHERE SALARY BETWEEN 10000 AND 20000;
 
 
 /* show those employee details whose manager id is either 205 or 121 or 101 or 110  */
 SELECT * 
 FROM employees
-WHERE MANAGER_ID IN(205, 121, 101, 110)
+WHERE MANAGER_ID IN(205, 121, 101, 110);
+
+
 
 
 LIKE operator:
@@ -146,13 +151,15 @@ salary > 22000 - salary rank 'A'
 15000 <= salary <= 22000 - salary rank 'B'
 salary < 15000 - salary rank 'C'
 
+;
+
 SELECT  FIRST_NAME,
         CASE 
             WHEN SALARY > 22000 THEN 'A'
             WHEN SALARY BETWEEN 15000 AND 22000 THEN 'B'
             ELSE 'C'
         /* END AS 'salary rank' */
-FROM employees
+FROM employees;
 
 
 
@@ -198,7 +205,7 @@ salary = 11235 tk
 
 (11235%100) = 35
 
-
+;
 
 WEONG
 /* show the employee first name and salary in 'x thousand y hundred z taka only' */
@@ -211,8 +218,7 @@ SELECT  FIRST_NAME,
          	SALARY % 100,
          	' taka only '
          ) AS 'salary in words'
-FROM employees
-
+FROM employees;
 
 
 
@@ -235,3 +241,4 @@ missed some part
 DATETIME FUNCTION:
 
 DATEDIF(datetime1, datetime2) #number of days
+
