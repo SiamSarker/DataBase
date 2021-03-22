@@ -233,6 +233,17 @@ RIGHT(str, len)
 LPAD(str, len, padstr)
 RPAD(str, len, padstr)
 
+/* show the employee code word where the code word format is first two characters from first
+name followed by an underscore and then the last 2 characters from last name */
+
+SELECT LOWER(
+        CONCAT(
+        LEFT(FIRST_NAME, 2),
+        '_',
+        RIGHT(LAST_NAME, 2)
+        ) 
+    )AS 'code name'
+FROM employees;
 
 
 missed some part
