@@ -246,10 +246,45 @@ SELECT LOWER(
 FROM employees;
 
 
-missed some part
 
 
 DATETIME FUNCTION:
 
-DATEDIF(datetime1, datetime2) #number of days
+DATEDIF(datetime1, datetime2) #number of days(integer)
 
+
+
+/* show the employess expeience in 
+'x years y months z days' format */
+
+SELECT 
+CONCAT(
+	DATEDIFF(CURDATE(), HIRE_DATE) DIV 365,
+    ' years ',
+    (DATEDIFF(CURDATE(), HIRE_DATE) % 365) DIV 30,
+    ' months ',
+    DATEDIFF(CURDATE(), HIRE_DATE) % 30,
+    ' days '
+) AS 'experience'
+
+FROM employees;
+
+
+
+DATE_ADD(datetime, INTERVAL n unit)
+
+
+/* show the employess hire date by extending 10 days */
+
+SELECT HIRE_DATE,
+CONCAT(
+	DATE_ADD(HIRE_DATE, INTERVAL 10 DAY)
+) AS 'extended'
+
+FROM employees;
+
+
+
+DATE_FORMAT(date, format)
+
+STR_TO_DATE(string, format)
