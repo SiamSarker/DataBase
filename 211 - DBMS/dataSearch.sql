@@ -1,3 +1,5 @@
+USE USE hr_schema;
+
 1.
 SELECT * FROM tablename
 /* * all */
