@@ -207,7 +207,7 @@ salary = 11235 tk
 
 ;
 
-WEONG
+
 /* show the employee first name and salary in 'x thousand y hundred z taka only' */
 SELECT  FIRST_NAME,
 		CONCAT(
