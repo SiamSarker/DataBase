@@ -123,6 +123,7 @@ WHERE FIRST_NAME LIKE '%a'
 ex. name contains 'abc'
 WHERE FIRST_NAME LIKE '%abc%'
 
+
 ex. name consists of 3 characters
 WHERE FIRST_NAME LIKE '___'
 
