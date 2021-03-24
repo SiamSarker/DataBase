@@ -58,4 +58,28 @@ WHERE first_name LIKE '%a_';
 
 3. IN() / NOT IN()
 
+SELECT * 
+FROM countries
+WHERE country_id IN ('AU', 'BR', 'CN', 'JP');
+
+SELECT * 
+FROM departments
+WHERE department_id NOT IN (204, 100, 145);
+
+SELECT * 
+FROM employees
+WHERE job_id IN ('ST_MAN', 'IT_PROG');
+
+SELECT * 
+FROM employees
+WHERE department_id NOT IN (100, 30, 90);
+
+SELECT * 
+FROM locations
+WHERE postal_code IN (2901, 50090);
+
+SELECT * 
+FROM locations
+WHERE city IN ('Roma', 'Venice', 'Tokyo');
+
 
