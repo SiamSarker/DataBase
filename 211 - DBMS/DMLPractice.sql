@@ -36,3 +36,25 @@ WHERE first_name LIKE 's%' OR first_name LIKE 'a%';
 SELECT * 
 FROM employees
 WHERE first_name LIKE '%o%' AND first_name LIKE '%a%';
+
+SELECT * 
+FROM employees
+WHERE first_name LIKE '%oa%';
+
+SELECT * 
+FROM employees
+WHERE first_name LIKE '___';
+
+SELECT * 
+FROM employees
+WHERE first_name LIKE '___%';
+
+SELECT * 
+FROM employees
+WHERE first_name LIKE '%a_';
+
+
+
+
+3. IN() / NOT IN()
+

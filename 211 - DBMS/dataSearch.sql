@@ -73,7 +73,6 @@ LIMIT 9,1;
 
 
 
-
 exercise:
 
 /* show the first name and salary value in thousand foemat */
