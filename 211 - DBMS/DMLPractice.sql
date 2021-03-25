@@ -83,3 +83,33 @@ FROM locations
 WHERE city IN ('Roma', 'Venice', 'Tokyo');
 
 
+
+
+
+4. BETWEEN … AND… / NOT BETWEEN … AND …
+
+SELECT * 
+FROM departments
+WHERE location_id BETWEEN 1000 AND 2000;
+
+SELECT * 
+FROM employees
+WHERE salary BETWEEN 10000 AND 20000;
+
+SELECT * 
+FROM employees
+WHERE hire_date BETWEEN '1987-01-01' AND '1987-06-30';
+
+SELECT * 
+FROM employees
+WHERE employee_id NOT BETWEEN 50 AND 60;
+
+SELECT * 
+FROM jobs
+WHERE max_salary BETWEEN 5000 AND 10000
+	AND min_salary BETWEEN 5000 AND 10000;
+
+SELECT * 
+FROM job_history
+WHERE end_date BETWEEN '1998-12-01' AND '1998-12-31';
+
