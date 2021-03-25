@@ -113,3 +113,66 @@ SELECT *
 FROM job_history
 WHERE end_date BETWEEN '1998-12-01' AND '1998-12-31';
 
+
+
+
+
+5.  CASE WHEN … WHEN … ELSE … END statement
+
+SELECT employee_id, 
+	start_date,
+	job_id,
+	CASE 
+		WHEN start_date <=  '1989-12-31' THEN 'C'
+		WHEN start_date BETWEEN '1900-01-01' AND '1994-12-31' THEN 'B'
+		ELSE 'A'
+	END AS 'Group Name'
+FROM job_history;
+
+SELECT department_name,
+	location_id,
+	CASE 
+		WHEN location_id <  1200 THEN 'C'
+		WHEN location_id BETWEEN 1200 AND 2000 THEN 'B'
+		ELSE 'A'
+	END AS 'Location Group Name'
+FROM departments;
+
+SELECT job_id,
+	job_title,
+	CASE 
+		WHEN job_title LIKE '%president%' THEN 'President'
+		WHEN job_title LIKE '%manager%' THEN 'Manager'
+		ELSE 'Other'
+	END AS 'Job Group Name'
+FROM jobs;
+
+SELECT location_id, 
+	city, 
+	state_province,
+	CASE 
+		WHEN city IN ('Tokyo', 'Venice', 'Toronto', 'Oxford', 'Singapore') THEN 'A'
+		WHEN city IN ('Mexico City', 'London', 'Sydney', 'Seattle', 'Beijing' ) THEN 'B'
+		ELSE 'C'
+	END AS 'Location Group Name'
+FROM locations; 
+
+SELECT employee_id, 
+	start_date, 
+	end_date,
+	CASE 
+		WHEN DATEDIFF(end_date, start_date) > 1200 THEN 'A'
+		WHEN DATEDIFF(end_date, start_date) BETWEEN 600 AND 1200 THEN 'B'
+		ELSE 'C'
+	END AS 'SENIORITY_LEVEL'
+FROM job_history; 
+
+SELECT job_id, 
+	job_title,
+	CASE 
+		WHEN (max_salary - min_salary) > 20000 THEN 'A'
+		WHEN (max_salary - min_salary) BETWEEN 10000 AND 20000 THEN 'B'
+		ELSE 'C'
+	END AS 'SALARY_RANGE_CLASS'
+FROM jobs;
+
