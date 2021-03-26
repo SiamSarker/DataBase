@@ -176,3 +176,56 @@ SELECT job_id,
 	END AS 'SALARY_RANGE_CLASS'
 FROM jobs;
 
+
+
+
+
+4. Numerical and String Functions 
+
+SELECT employee_id,
+	LOWER(
+		CONCAT(
+			LEFT(first_name, 3),
+			'_',
+			LEFT(last_name, 3)
+		)
+	)
+FROM employees;
+
+SELECT *
+FROM employees
+WHERE first_name = REVERSE(first_name) OR last_name = REVERSE(last_name);
+
+SELECT employee_id,
+	CONCAT(
+		email, '@gmail.com'
+	) AS 'email'
+FROM employees;
+
+SELECT first_name,
+	CONCAT(
+		RPAD(LEFT(phone_number, 4), LENGTH(phone_number)-1, 'xxx.xxx'),
+		RIGHT(phone_number, 1)
+	) AS 'phone_number'
+FROM employees;
+
+SELECT employee_id,
+	email,
+	RPAD
+	(
+		CONCAT(
+			first_name,
+			' ',
+			last_name
+		),
+		20,
+		' '
+	) AS 'Full Name'
+FROM employees;
+
+SELECT *
+FROM locations
+WHERE LENGTH(postal_code) <= 5 AND 
+	LEFT(postal_code, 2) BETWEEN 50 AND 99;
+
+
