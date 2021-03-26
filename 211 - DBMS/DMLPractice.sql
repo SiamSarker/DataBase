@@ -228,4 +228,20 @@ FROM locations
 WHERE LENGTH(postal_code) <= 5 AND 
 	LEFT(postal_code, 2) BETWEEN 50 AND 99;
 
+SELECT *
+FROM jobs
+WHERE (max_salary-min_salary) > 8000 AND 
+    job_title LIKE '%manager%';
+
+SELECT employee_id,
+    FLOOR(
+        salary * 12* ( 1+(commission_pct/100))
+    ) AS 'yearly total salary'
+FROM employees;
+
+SELECT *
+FROM departments
+WHERE SUBSTR(
+    location_id, 2, 1
+) BETWEEN 5 AND 9;
 
