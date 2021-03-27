@@ -2,9 +2,9 @@
 -- Here, experience = end_date – start_date
 
 SELECT employee_id,
-        DATEDIFF(end_date, start_date) AS experience
+        DATEDIFF(end_date, start_date) AS Experience
 FROM job_history
-ORDER BY experience DESC
+ORDER BY Experience DESC
 LIMIT 3, 1;
 
 
@@ -13,9 +13,9 @@ LIMIT 3, 1;
 -- Here, gross salary = salary+salary*commission_pct
 
 SELECT first_name,
-        salary+salary*commission_pct AS 'gross salary'
+        salary + (salary* IFNULL(commission_pct, 0)) AS gross_salary
 FROM employees
-ORDER BY 'gross salary' ASC 
+ORDER BY gross_salary ASC
 LIMIT 5;
 
 
@@ -59,9 +59,9 @@ ORDER BY manager_id ASC, hire_date DESC;
 
 SELECT employee_id,
         CONCAT(
-                UPPER(LEFT(first_name,1)),LOWER(RIGHT(first_name,1)),
+                UPPER(SUBSTR(first_name,1,1)),LOWER(SUBSTR(first_name,-1,1)),
                 '-',
-                UPPER(LEFT(last_name,1)),LOWER(RIGHT(last_name,1))
+                UPPER(SUBSTR(last_name,1,1)),LOWER(SUBSTR(last_name,-1,1))
         ) AS 'Short name',
         LPAD(
                 CONCAT(email,'@gmail.com'), 25, ' '
@@ -70,20 +70,21 @@ SELECT employee_id,
         ROUND(salary*(1+commission_pct), 4) AS 'Total Salary',
 
         CONCAT(
-                DATEDIFF(CURDATE(), hire_date) DIV 365,
+                DATEDIFF(NOW(), hire_date) DIV 365,
                 ' years, ',
-                (DATEDIFF(CURDATE(), hire_date)%365) DIV 12,
+                (DATEDIFF(NOW(), hire_date)%365) DIV 12,
                 ' months and ',
-                DATEDIFF(CURDATE(), hire_date) % 30,
+                DATEDIFF(NOW(), hire_date) % 30,
                 ' days only'
         ) AS 'Total Experience',
         
 	DATE_ADD(hire_date, INTERVAL (35*365) DAY) AS 'Expected Retirement Date'
 
 FROM employees
-WHERE hire_date > DATE(
+WHERE DATE(
     STR_TO_DATE(
         '1987, Jun 01 11:20 AM',
         '%Y, %b %d %h:%i %p'
     )
- );
+ ) < hire_date;
+
