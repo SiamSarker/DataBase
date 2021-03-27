@@ -1,4 +1,4 @@
-1. Basic SELECT Statement
+--          1. Basic SELECT Statement
 
 SELECT * FROM countries;
 SELECT * FROM employees;
@@ -7,7 +7,7 @@ SELECT * FROM job_history;
 
 
 
-2. LIKE / NOT LIKE
+--           2. LIKE / NOT LIKE
 
 SELECT * 
 FROM employees
@@ -56,7 +56,7 @@ WHERE first_name LIKE '%a_';
 
 
 
-3. IN() / NOT IN()
+--           3. IN() / NOT IN()
 
 SELECT * 
 FROM countries
@@ -86,7 +86,7 @@ WHERE city IN ('Roma', 'Venice', 'Tokyo');
 
 
 
-4. BETWEEN … AND… / NOT BETWEEN … AND …
+--           4. BETWEEN … AND… / NOT BETWEEN … AND …
 
 SELECT * 
 FROM departments
@@ -117,7 +117,7 @@ WHERE end_date BETWEEN '1998-12-01' AND '1998-12-31';
 
 
 
-5.  CASE WHEN … WHEN … ELSE … END statement
+--        5.  CASE WHEN … WHEN … ELSE … END statement
 
 SELECT employee_id, 
 	start_date,
@@ -180,7 +180,7 @@ FROM jobs;
 
 
 
-4. Numerical and String Functions 
+--		4. Numerical and String Functions 
 
 SELECT employee_id,
 	LOWER(
@@ -245,3 +245,63 @@ WHERE SUBSTR(
     location_id, 2, 1
 ) BETWEEN 5 AND 9;
 
+
+
+
+
+
+
+--              5. Date and Time Functions
+
+
+SELECT email,
+    DATE_FORMAT(hire_date, '%M %D, %Y') AS 'hire_date'
+FROM employees;
+
+SELECT email,
+    DATE_FORMAT(hire_date, '%b %Y, %d') AS 'hire_date'
+FROM employees;
+
+SELECT email,
+    DATE_FORMAT(hire_date, '%D %b, %y %h:%s %p') AS 'hire_date'
+FROM employees;
+
+SELECT email,
+    DATE_FORMAT(hire_date, '%d %b, %Y %W %k:%i') AS 'hire_date'
+FROM employees;
+
+SELECT first_name, 
+    email, 
+    phone_number
+FROM employees
+WHERE DATE(
+    STR_TO_DATE(
+        '05 May, 1987 01:00 AM',
+        '%d %M, %Y %h:%i %p'
+    )
+ ) < hire_date;
+
+
+SELECT first_name, 
+    email, 
+    phone_number,
+    hire_date
+FROM employees
+WHERE DATE(
+    STR_TO_DATE(
+        '1st June 1987 11:01 PM',
+        '%D %M %Y %h:%i %p'
+    )
+ ) > hire_date;
+
+
+
+
+
+
+-- Assignment 3
+SELECT  *
+FROM    locations
+WHERE   (street_address LIKE '%Rd%' ||  street_address LIKE '%St%') &&
+        (country_id ='IT' OR country_id ='JP' OR country_id ='US') AND
+        postal_code BETWEEN 1000 AND 20000; 
