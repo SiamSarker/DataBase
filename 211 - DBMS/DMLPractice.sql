@@ -295,13 +295,19 @@ WHERE DATE(
  ) > hire_date;
 
 
+SELECT employee_id,
+	ROUND(DATEDIFF( NOW(), hire_date) / 365, 3) AS 'Experienced Year'
+FROM employees;
 
+SELECT employee_id,
+		email,
+		CONCAT(
+			DATEDIFF(NOW(), hire_date) DIV 365,
+			' years, ',
+			LPAD((DATEDIFF(NOW(), hire_date) % 365) DIV 12, 2, 0),
+			' months and ',
+			DATEDIFF(NOW(), hire_date) % 30,
+			' days'
+		) AS 'Experience year'
+FROM employees;
 
-
-
--- Assignment 3
-SELECT  *
-FROM    locations
-WHERE   (street_address LIKE '%Rd%' ||  street_address LIKE '%St%') &&
-        (country_id ='IT' OR country_id ='JP' OR country_id ='US') AND
-        postal_code BETWEEN 1000 AND 20000; 
