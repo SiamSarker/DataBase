@@ -311,3 +311,8 @@ SELECT employee_id,
 		) AS 'Experience year'
 FROM employees;
 
+
+SELECT employee_id,
+		email,
+		DATE_FORMAT(hire_date, '%Y %M') AS hire_date
+FROM employees;

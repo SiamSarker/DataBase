@@ -1,10 +1,9 @@
 -- 1. Show the 4th senior most employee id from the job history table.
 -- Here, experience = end_date – start_date
 
-SELECT employee_id,
-        DATEDIFF(end_date, start_date) AS Experience
+SELECT employee_id
 FROM job_history
-ORDER BY Experience DESC
+ORDER BY DATEDIFF(end_date, start_date) DESC
 LIMIT 3, 1;
 
 
