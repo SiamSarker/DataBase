@@ -90,3 +90,51 @@ HAVING COUNT(*) > 5
 ORDER BY cnt DESC;
 
 
+
+-- total number of employees based on their 
+-- 5th to 7th character of phone number.
+-- alising use only on Group by and having
+
+SELECT SUBSTR(phone_number, 5, 3) AS alising,
+    COUNT(*)
+
+FROM employees
+GROUP BY alising;
+
+
+
+-- for each year and each month, count the total
+-- number of employees hired by the company
+
+
+
+SELECT YEAR(hire_date), MONTH(hire_date), COUNT(*)
+FROM employees
+GROUP BY YEAR(hire_date), MONTH(hire_date);
+
+
+
+-- Salary Class:
+-- 10000 < C
+-- 10000 - 20000 B
+-- 20000 > A
+-- for each department and each salary class.
+-- show the avarage salary of that group.
+
+
+SELECT department_id,
+        CASE 
+                WHEN salary < 10000 THEN 'C'
+                WHEN salary BETWEEN 10000 AND 20000 THEN 'B'
+                ELSE 'C'
+        END AS salary_class,
+        AVG(salary) 
+FROM employees
+GROUP BY department_id, salary_class;
+
+
+
+
+
+
+
