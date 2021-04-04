@@ -50,3 +50,43 @@ GROUP BY manager_id;
 SELECT YEAR(hire_date), COUNT(*)
 FROM employees
 GROUP BY YEAR(hire_date);
+
+
+
+-- count alphabetwise total number of employees 
+
+SELECT LEFT(first_name, 1),
+    COUNT(*)
+    
+FROM employees
+GROUP BY LEFT(first_name, 1);
+
+
+
+-- count alphabetwise total number of employees 
+-- don not consider employees which job type is'IT_PROG'
+
+SELECT LEFT(first_name, 1),
+    COUNT(*)
+
+FROM employees
+WHERE job_id != 'IT_PROG'
+GROUP BY LEFT(first_name, 1);
+
+
+
+
+-- count alphabetwise total number of employees 
+-- don not consider employees which job type is'IT_PROG'
+-- Only consider when count number is higher than 5 in decending order
+
+SELECT LEFT(first_name, 1),
+    COUNT(*) AS cnt
+
+FROM employees
+WHERE job_id != 'IT_PROG'
+GROUP BY LEFT(first_name, 1)
+HAVING COUNT(*) > 5
+ORDER BY cnt DESC;
+
+
