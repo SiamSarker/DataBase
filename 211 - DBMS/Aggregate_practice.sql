@@ -108,4 +108,3 @@ SELECT COUNT(*)
 FROM employees
 WHERE employee_id > manager_id;
 
-
