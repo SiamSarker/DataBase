@@ -38,6 +38,7 @@ SELECT department_id, COUNT(*)
 FROM employees
 GROUP BY department_id;
 
+
 -- managed by each manager
 
 SELECT manager_id, COUNT(*), MAX(salary)
