@@ -122,9 +122,11 @@ GROUP BY grp_year;
 
 
 SELECT max_salary-min_salary,
-    CASE
-    WHEN max_salary-min_salary < 10000 THEN COUNT(*)
-    END
+    CASE 
+                WHEN max_salary-min_salary < 10000 THEN 'C'
+                WHEN max_salary-min_salary BETWEEN 10000 AND 20000 THEN 'B'
+                ELSE 'A'
+        END AS salary_class
 FROM jobs
 GROUP BY max_salary-min_salary;
 
