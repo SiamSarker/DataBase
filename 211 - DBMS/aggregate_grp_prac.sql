@@ -133,6 +133,22 @@ GROUP BY max_salary-min_salary;
 
 
 
+SELECT 	department_id,
+		CASE
+        	WHEN salary<10000 THEN 'C'
+            WHEN salary BETWEEN 10000 AND 20000 THEN 'B'
+            ELSE 'A'
+        END AS salary_class,
+        AVG(salary)
+        
+FROM 	employees
+-- #WHERE
+GROUP BY DEPARTMENT_ID, salary_class;
+-- #HAVING
+
+
+
+
 
 
 -- 11. For each country_id, show the total no of locations 
