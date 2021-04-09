@@ -305,6 +305,7 @@ GROUP BY man.manager_id;
 
 
 
+
 -- 19. Show the employee name and no of employees who receives 
 -- lower salary than him.
 

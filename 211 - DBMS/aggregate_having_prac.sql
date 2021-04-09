@@ -34,6 +34,7 @@ HAVING COUNT(*) > 5;
 
 
 
+
 -- 4. Group employees based on the first 3 digit of their phone number. 
 -- Avoid employees from department no 10/20/60 and also avoid those groups 
 -- where total salaries of employees is less than 50000.
