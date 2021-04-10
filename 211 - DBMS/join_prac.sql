@@ -326,13 +326,14 @@ HAVING  COUNT(*)>=20;
 
 
 SELECT  myself.FIRST_NAME,
-        COUNT(*)
+col.first_name
+        /* COUNT(*) */
     
 FROM    employees AS myself
 
         JOIN
         employees AS col
-        ON myself.HIRE_DATE>col.HIRE_DATE
+        ON myself.HIRE_DATE>col.HIRE_DATE;
         
 GROUP BY myself.EMPLOYEE_ID, myself.FIRST_NAME
 

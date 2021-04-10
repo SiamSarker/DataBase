@@ -29,7 +29,7 @@ SELECT emp.first_name,
 FROM    employees AS emp
         JOIN
         employees AS col
-        ON emp.HIRE_DATE<col.HIRE_DATE;
+        ON emp.HIRE_DATE < col.HIRE_DATE;
 
 
 
@@ -50,7 +50,7 @@ works in that country. Don’t consider employees whose
 manager is 30 and also don’t consider those country where 
 less than 20 employees work. */
 
-SELECT c.country_name,
+SELECT 
     COUNT(*)
 FROM countries as c
      JOIN
@@ -61,7 +61,8 @@ FROM countries as c
     employees as emp ON emp.department_id = d.department_id
 
 WHERE emp.manager_id != 30
-GROUP BY c.country_id;
+GROUP BY c.country_id
+HAVING COUNT(*) > 20;
         
 
 
@@ -115,5 +116,5 @@ FROM jobs as j
 
 WHERE YEAR(emp.hire_date) != 1994
 GROUP BY YEAR(emp.hire_date), j.job_id
-HAVING AVG(emp.salary) < 3000;
+HAVING AVG(emp.salary) < 300;
 
