@@ -116,5 +116,5 @@ FROM jobs as j
 
 WHERE YEAR(emp.hire_date) != 1994
 GROUP BY YEAR(emp.hire_date), j.job_id
-HAVING AVG(emp.salary) < 300;
+HAVING AVG(emp.salary) > 3000;
 
