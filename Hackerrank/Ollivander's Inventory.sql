@@ -1,9 +1,9 @@
-SELECT id, p.age, w.coins_needed, w.power
+SELECT id, age, m.mini, w.power
 FROM 
     (
         SELECT code, power, MIN(coins_needed) as mini
         FROM Wands
-        GROUP BY code
+        GROUP BY code,power
     ) as m
     JOIN
     Wands as w on w.code = m.code AND w.power = m.power AND w.coins_needed = m.mini
