@@ -54,39 +54,31 @@ HAVING COUNT(man.employee_id) = (
 
 /* 6. For each year, show the year number and that job id where maximum 
 number of employees have joined the company in that year. */
-SELECT emp1.year, MAX(emp1.num_emp_joined)
+SELECT emp1.year, emp1.jid, MAX(emp1.num_emp_joined)
 FROM (
     SELECT  YEAR(hire_date) AS year, 
-                job_id, 
+                job_id as jid, 
                 COUNT(*) AS num_emp_joined
             FROM employees
-            GROUP BY YEAR(hire_date), job_id
+            GROUP BY YEAR(hire_date), jid
+            ORDER BY num_emp_joined DESC 
 ) AS emp1
 GROUP BY emp1.year;
-
-
-
-/* 
-    combine the ideas of 6 and 7
-    sadly both wrong for now
-*/
 
 
 /* 7. For each department, show the department id and that year number 
 when the department hired maximum number of employees in that department. */
 
-SELECT department_id, YEAR(hire_date)
-FROM employees
-GROUP BY department_id, YEAR(hire_date)
-HAVING COUNT(*) = (
-        SELECT MAX(d1.num_emp_joined)
-        FROM (
-        SELECT
+SELECT d1.did, d1.year, MAX(d1.num_emp_joined)
+FROM (
+    SELECT YEAR(hire_date) AS year, 
+            department_id as did, 
             COUNT(*) AS num_emp_joined
             FROM employees
-            GROUP BY department_id, YEAR(hire_date)
+            GROUP BY did, year
+            ORDER BY num_emp_joined DESC
     ) AS d1
-)
+GROUP BY d1.did;
 
 
 
