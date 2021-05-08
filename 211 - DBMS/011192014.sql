@@ -72,9 +72,6 @@ GROUP BY emp1.year;
 */
 
 
-
-
-
 /* 7. For each department, show the department id and that year number 
 when the department hired maximum number of employees in that department. */
 
