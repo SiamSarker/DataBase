@@ -19,27 +19,26 @@ WHERE (t.AMOUNT) = (
 
 SELECT ac.*
 FROM account as ac
-WHERE ac.id = (
-    SELECT emp.empid
-    FROM (
-        SELECT emp1.EMP_ID as empid
+    JOIN employee as emp
+        ON emp.EMP_ID = ac.OPEN_EMP_ID
+    JOIN customer as cus
+        ON cus.CUST_ID = ac.CUST_ID
+
+WHERE emp.EMP_ID = (
+        SELECT emp1.EMP_ID
         FROM account as ac1
         JOIN
         employee as emp1
         ON emp1.EMP_ID = ac1.OPEN_EMP_ID
-        WHERE ac1 = 5
-    ) AS emp
-    JOIN 
-    (
-        SELECT cus1.CUS_ID as cusid
-        FROM (
-        SELECT cus1.CUST_ID as cusid
+        WHERE ac1.ACCOUNT_ID = 5
+    )
+    AND 
+    cus.CUST_ID = (
+        SELECT cus1.CUST_ID
         FROM account as ac1
         JOIN
         customer as cus1
         ON cus1.CUST_ID = ac1.CUST_ID
-        WHERE ac1 = 1
-    ) AS cus
-    ) 
-    ON emp.empid = cus.cusid;
+        WHERE ac1.ACCOUNT_ID = 1
+    );
 
