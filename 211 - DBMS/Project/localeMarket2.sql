@@ -6,7 +6,6 @@ CREATE TABLE Bid_rank (id int(10) NOT NULL AUTO_INCREMENT, rank_id int(10) NOT N
 CREATE TABLE Bid_room (bid_id int(10) NOT NULL AUTO_INCREMENT, totalWeight int(10) NOT NULL, lowest_bidWeight int(10) NOT NULL, lowestPrice_perUnit int(10) NOT NULL, bid_start datetime NOT NULL, bid_end datetime NOT NULL, Productp_id int(10) NOT NULL, PRIMARY KEY (bid_id));
 CREATE TABLE payment (payment_id int(10) NOT NULL AUTO_INCREMENT, trans_id int(10) NOT NULL, amount int(10) NOT NULL, delivery_status varchar(25) NOT NULL, Buyerb_username varchar(25) NOT NULL, farmerf_username varchar(25) NOT NULL, PRIMARY KEY (payment_id));
 CREATE TABLE notification (notify_id int(10) NOT NULL AUTO_INCREMENT, text varchar(255) NOT NULL, notify_datetime datetime NOT NULL, farmerf_username varchar(25) NOT NULL, Buyerb_username varchar(25) NOT NULL, PRIMARY KEY (notify_id));
-
 CREATE TABLE Buyer_Product (Buyerb_username varchar(25) NOT NULL, Productp_id int(10) NOT NULL, productName varchar(25) NOT NULL, totalWeight int(10) NOT NULL, totalPrice int(10) NOT NULL, PRIMARY KEY (Buyerb_username, Productp_id));
 CREATE TABLE Buyer_Bid_room (Buyerb_username varchar(25) NOT NULL, Bid_roombid_id int(10) NOT NULL, Bid_rankid int(10) NOT NULL, PRIMARY KEY (Buyerb_username, Bid_roombid_id));
 CREATE TABLE Buyer_Bid_rank (Buyerb_username varchar(25) NOT NULL, Bid_rankid int(10) NOT NULL, productName varchar(25) NOT NULL, totalWeight int(10) NOT NULL, totalPrice int(10) NOT NULL, PRIMARY KEY (Buyerb_username, Bid_rankid));
