@@ -60,3 +60,7 @@ FROM emp;
 SELECT MAX(salary), MIN(salary), AVG(salary)
 FROM emp
 GROUP BY jobs;
+
+
+Select * FROM farmer;
+-- Cool with discord
